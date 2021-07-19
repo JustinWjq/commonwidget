@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TitleBar">
+        <!-- 整体样式 -->
+        <attr name="barStyle">
+            <enum name="light" value="0x10" />
+            <enum name="night" value="0x20" />
+            <enum name="transparent" value="0x30" />
+            <enum name="ripple" value="0x40" />
+        </attr>
+        <!-- 中间 -->
+        <attr name="title" format="string" />
+        <attr name="titleColor" format="color" />
+        <attr name="titleSize" format="dimension" />
+        <attr name="titleGravity">
+            <flag name="left" value="0x03" />
+            <flag name="right" value="0x05" />
+            <flag name="center" value="0x11" />
+            <flag name="start" value="0x00800003" />
+            <flag name="end" value="0x00800005" />
+        </attr>
+        <attr name="titleStyle">
+            <flag name="normal" value="0" />
+            <flag name="bold" value="1" />
+            <flag name="italic" value="2" />
+        </attr>
+        <!-- 左边 -->
+        <attr name="leftTitle" format="string"/>
+        <!-- leftIcon 优先于 backButton -->
+        <attr name="leftIcon" format="reference" />
+        <attr name="leftTint" format="color" />
+        <!-- 返回按钮（默认开） -->
+        <attr name="backButton" format="boolean" />
+        <attr name="leftColor" format="color" />
+        <attr name="leftSize" format="dimension" />
+        <attr name="leftBackground" format="reference|color" />
+        <!-- 右边 -->
+        <attr name="rightTitle" format="string" />
+        <attr name="rightIcon" format="reference" />
+        <attr name="rightTint" format="color" />
+        <attr name="rightColor" format="color" />
+        <attr name="rightSize" format="dimension" />
+        <attr name="rightBackground" format="reference|color" />
+        <!-- 分割线 -->
+        <attr name="lineVisible" format="boolean" />
+        <attr name="lineColor" format="reference|color" />
+        <attr name="lineSize" format="dimension" />
+        <!-- 图标显示大小 -->
+        <attr name="drawableSize" format="dimension" />
+        <!-- 图标和文字的间距 -->
+        <attr name="android:drawablePadding" />
+        <!-- 控件水平内间距 -->
+        <attr name="android:paddingVertical" />
+        <!-- 控件垂直内间距（可用于调整标题栏自适应的高度） -->
+        <attr name="android:paddingHorizontal" />
+    </declare-styleable>
+
+    <!-- 正则表达式编辑框 -->
+    <declare-styleable name="RegexEditText">
+        <!-- 正则输入限制 -->
+        <attr name="inputRegex" format="string" />
+        <!-- 常用正则类型 -->
+        <attr name="regexType" >
+            <!-- 手机号（只能以 1 开头） -->
+            <enum name="mobile" value="0x01" />
+            <!-- 中文（普通的中文字符） -->
+            <enum name="chinese" value="0x02" />
+            <!-- 英文（大写和小写的英文） -->
+            <enum name="english" value="0x03" />
+            <!-- 整数（非 0 开头的数字） -->
+            <enum name="count" value="0x04" />
+            <!-- 用户名（中文、英文、数字） -->
+            <enum name="name" value="0x05" />
+            <!-- 非空格字符 -->
+            <enum name="nonnull" value="0x06" />
+        </attr>
+    </declare-styleable>
+    <declare-styleable name="tx_VideoView">
+        <attr name="tx_isself" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="tx_ArrowDrawable">
+        <!-- 背景色 -->
+        <attr format="reference|color" name="tx_ad_bgColor" />
+        <!-- 阴影色 -->
+        <attr format="reference|color" name="tx_ad_shadowColor" />
+        <!-- 箭头高度 -->
+        <attr format="dimension" name="tx_ad_arrowHeight" />
+        <!-- 阴影宽度 -->
+        <attr format="dimension" name="tx_ad_shadowSize" />
+        <!-- 浮窗圆角半径 -->
+        <attr format="dimension" name="tx_ad_radius" />
+        <!-- 箭头在 x 轴的偏移量 -->
+        <attr format="dimension" name="tx_ad_arrowExtraOffsetX" />
+        <!-- 箭头在 y 轴的偏移量 -->
+        <attr format="dimension" name="tx_ad_arrowExtraOffsetY" />
+        <!-- 箭头相对于浮窗的位置 -->
+        <attr name="tx_ad_arrowGravity">
+            <flag name="to_top_align_start" value="65" />
+            <flag name="to_top_center" value="129" />
+            <flag name="to_top_align_end" value="257" />
+
+            <flag name="align_top_to_start" value="34" />
+            <flag name="align_top_to_end" value="514" />
+
+            <flag name="center_to_start" value="36" />
+            <flag name="center_to_end" value="516" />
+
+            <flag name="align_bottom_to_start" value="40" />
+            <flag name="align_bottom_to_end" value="520" />
+
+            <flag name="to_bottom_align_start" value="80" />
+            <flag name="to_bottom_center" value="144" />
+            <flag name="to_bottom_align_end" value="272" />
+        </attr>
+    </declare-styleable>
+
+    <declare-styleable name="tx_CircleImageView">
+        <attr name="tx_civ_border_width" format="dimension" />
+        <attr name="tx_civ_border_color" format="color" />
+        <attr name="tx_civ_border_overlay" format="boolean" />
+        <attr name="tx_civ_circle_background_color" format="color" />
+    </declare-styleable>
+
+    <declare-styleable name="pickerview">
+        <attr name="wheelview_gravity">
+            <enum name="center" value="17"/>
+            <enum name="left" value="3"/>
+            <enum name="right" value="5"/>
+        </attr>
+        <attr name="wheelview_textSize" format="dimension"/>
+        <attr name="wheelview_textColorOut" format="color"/>
+        <attr name="wheelview_textColorCenter" format="color"/>
+        <attr name="wheelview_dividerColor" format="color"/>
+        <attr name="wheelview_dividerWidth" format="dimension"/>
+        <attr name="wheelview_lineSpacingMultiplier" format="float"/>
+    </declare-styleable>
+</resources>

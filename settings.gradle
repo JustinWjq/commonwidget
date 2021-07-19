@@ -1,0 +1,3 @@
+rootProject.name = "CommonPj"
+include ':app'
+include ':weight'

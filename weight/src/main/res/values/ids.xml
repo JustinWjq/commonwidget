@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="statusbarutil_fake_status_bar_view" type="id"  />
+    <item name="statusbarutil_translucent_view" type="id"/>
+    <item name="tx_BaseQuickAdapter_viewholder_support" type="id"/>
+    <item name="tx_BaseQuickAdapter_swiping_support" type="id"/>
+    <item name="tx_BaseQuickAdapter_dragging_support" type="id"/>
+    <item name="tx_BaseQuickAdapter_databinding_support" type="id"/>
+
+    <item name="tx_immersion_status_bar_view" type="id" />
+    <item name="tx_immersion_navigation_bar_view" type="id" />
+    <item name="tx_immersion_fits_layout_overlap" type="id" />
+    <item name="tx_action_bar_container" type="id" />
+</resources>
