@@ -6,18 +6,18 @@ import android.app.Dialog;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.FloatRange;
-import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.ColorUtils;
-import android.support.v4.widget.DrawerLayout;
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.FloatRange;
+import androidx.annotation.IdRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.DialogFragment;
+import androidx.core.app.Fragment;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.ColorUtils;
+import androidx.core.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
@@ -996,12 +996,12 @@ public final class TxImmersionBar implements TxImmersionCallback {
                     continue;
                 }
                 final int statusBarHeight = fixHeight;
-                Integer fitsHeight = (Integer) v.getTag(R.id.tx_immersion_fits_layout_overlap);
+                Integer fitsHeight = (Integer) v.getTag(R.id.common_immersion_fits_layout_overlap);
                 if (fitsHeight == null) {
                     fitsHeight = 0;
                 }
                 if (fitsHeight != statusBarHeight) {
-                    v.setTag(R.id.tx_immersion_fits_layout_overlap, statusBarHeight);
+                    v.setTag(R.id.common_immersion_fits_layout_overlap, statusBarHeight);
                     ViewGroup.LayoutParams layoutParams = v.getLayoutParams();
                     if (layoutParams == null) {
                         layoutParams = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -1091,12 +1091,12 @@ public final class TxImmersionBar implements TxImmersionCallback {
                 if (v == null) {
                     continue;
                 }
-                Integer fitsHeight = (Integer) v.getTag(R.id.tx_immersion_fits_layout_overlap);
+                Integer fitsHeight = (Integer) v.getTag(R.id.common_immersion_fits_layout_overlap);
                 if (fitsHeight == null) {
                     fitsHeight = 0;
                 }
                 if (fitsHeight != fixHeight) {
-                    v.setTag(R.id.tx_immersion_fits_layout_overlap, fixHeight);
+                    v.setTag(R.id.common_immersion_fits_layout_overlap, fixHeight);
                     ViewGroup.LayoutParams lp = v.getLayoutParams();
                     if (lp == null) {
                         lp = new ViewGroup.MarginLayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -1172,12 +1172,12 @@ public final class TxImmersionBar implements TxImmersionCallback {
                 if (v == null) {
                     continue;
                 }
-                Integer fitsHeight = (Integer) v.getTag(R.id.tx_immersion_fits_layout_overlap);
+                Integer fitsHeight = (Integer) v.getTag(R.id.common_immersion_fits_layout_overlap);
                 if (fitsHeight == null) {
                     fitsHeight = 0;
                 }
                 if (fitsHeight != fixHeight) {
-                    v.setTag(R.id.tx_immersion_fits_layout_overlap, fixHeight);
+                    v.setTag(R.id.common_immersion_fits_layout_overlap, fixHeight);
                     ViewGroup.LayoutParams lp = v.getLayoutParams();
                     if (lp == null) {
                         lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 0);

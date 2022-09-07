@@ -10,7 +10,6 @@ import android.view.View;
 
 import com.common.widget.dialog.util.XPopupUtils;
 
-
 /**
  * Description: 对勾View
  * Create by dance, at 2018/12/21

@@ -41,7 +41,7 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
         initAnim();
 
         if (mPickerOptions.customListener == null) {
-            LayoutInflater.from(context).inflate(R.layout.pickerview_time, contentContainer);
+            LayoutInflater.from(context).inflate(R.layout.common_pickerview_time, contentContainer);
 
             //顶部标题
             TextView tvTitle = (TextView) findViewById(R.id.tvTitle);
@@ -58,8 +58,8 @@ public class TimePickerView extends BasePickerView implements View.OnClickListen
             btnCancel.setOnClickListener(this);
 
             //设置文字
-            btnSubmit.setText(TextUtils.isEmpty(mPickerOptions.textContentConfirm) ? context.getResources().getString(R.string.pickerview_submit) : mPickerOptions.textContentConfirm);
-            btnCancel.setText(TextUtils.isEmpty(mPickerOptions.textContentCancel) ? context.getResources().getString(R.string.pickerview_cancel) : mPickerOptions.textContentCancel);
+            btnSubmit.setText(TextUtils.isEmpty(mPickerOptions.textContentConfirm) ? context.getResources().getString(R.string.common_pickerview_submit) : mPickerOptions.textContentConfirm);
+            btnCancel.setText(TextUtils.isEmpty(mPickerOptions.textContentCancel) ? context.getResources().getString(R.string.common_pickerview_cancel) : mPickerOptions.textContentCancel);
             tvTitle.setText(TextUtils.isEmpty(mPickerOptions.textContentTitle) ? "" : mPickerOptions.textContentTitle);//默认为空
 
             //设置color

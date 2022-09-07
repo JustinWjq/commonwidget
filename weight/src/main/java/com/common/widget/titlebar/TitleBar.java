@@ -70,10 +70,10 @@ public class TitleBar extends FrameLayout
             sGlobalInitializer = new LightBarInitializer();
         }
 
-        final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.TitleBar);
+        final TypedArray array = getContext().obtainStyledAttributes(attrs, R.styleable.common_TitleBar);
 
         // 标题栏样式设置
-        switch (array.getInt(R.styleable.TitleBar_barStyle, 0)) {
+        switch (array.getInt(R.styleable.common_TitleBar_common_barStyle, 0)) {
             case 0x10:
                 mCurrentInitializer = new LightBarInitializer();
                 break;
@@ -97,22 +97,22 @@ public class TitleBar extends FrameLayout
         mLineView = mCurrentInitializer.getLineView(context);
 
         // 限制图标显示的大小
-        if (array.hasValue(R.styleable.TitleBar_drawableSize)) {
-            setDrawableSize(array.getDimensionPixelSize(R.styleable.TitleBar_drawableSize, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_drawableSize)) {
+            setDrawableSize(array.getDimensionPixelSize(R.styleable.common_TitleBar_common_drawableSize, 0));
         }
 
         // 设置文字和图标之间的间距
-        if (array.hasValue(R.styleable.TitleBar_android_drawablePadding)) {
-            setDrawablePadding(array.getDimensionPixelSize(R.styleable.TitleBar_android_drawablePadding, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_android_drawablePadding)) {
+            setDrawablePadding(array.getDimensionPixelSize(R.styleable.common_TitleBar_android_drawablePadding, 0));
         }
 
         // 标题设置
-        if (array.hasValue(R.styleable.TitleBar_leftTitle)) {
-            setLeftTitle(array.getString(R.styleable.TitleBar_leftTitle));
+        if (array.hasValue(R.styleable.common_TitleBar_common_leftTitle)) {
+            setLeftTitle(array.getString(R.styleable.common_TitleBar_common_leftTitle));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_title)) {
-            setTitle(array.getString(R.styleable.TitleBar_title));
+        if (array.hasValue(R.styleable.common_TitleBar_common_title)) {
+            setTitle(array.getString(R.styleable.common_TitleBar_common_title));
         } else {
             // 如果当前上下文对象是 Activity，就获取 Activity 的 label 属性作为标题栏的标题
             if (context instanceof Activity) {
@@ -132,98 +132,98 @@ public class TitleBar extends FrameLayout
             }
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightTitle)) {
-            setRightTitle(array.getString(R.styleable.TitleBar_rightTitle));
+        if (array.hasValue(R.styleable.common_TitleBar_common_rightTitle)) {
+            setRightTitle(array.getString(R.styleable.common_TitleBar_common_rightTitle));
         }
 
         // 图标设置
-        if (array.hasValue(R.styleable.TitleBar_leftIcon)) {
-            setLeftIcon(CommonBarInitializer.getDrawableResources(getContext(), array.getResourceId(R.styleable.TitleBar_leftIcon, 0)));
+        if (array.hasValue(R.styleable.common_TitleBar_common_leftIcon)) {
+            setLeftIcon(CommonBarInitializer.getDrawableResources(getContext(), array.getResourceId(R.styleable.common_TitleBar_common_leftIcon, 0)));
         } else {
-            if (!array.getBoolean(R.styleable.TitleBar_backButton, true)) {
+            if (!array.getBoolean(R.styleable.common_TitleBar_common_backButton, true)) {
                 // 不显示返回图标
                 setLeftIcon(null);
             }
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightIcon)) {
-            setRightIcon(CommonBarInitializer.getDrawableResources(getContext(), array.getResourceId(R.styleable.TitleBar_rightIcon, 0)));
+        if (array.hasValue(R.styleable.common_TitleBar_common_rightIcon)) {
+            setRightIcon(CommonBarInitializer.getDrawableResources(getContext(), array.getResourceId(R.styleable.common_TitleBar_common_rightIcon, 0)));
         }
 
         // 图标颜色设置
-        if (array.hasValue(R.styleable.TitleBar_leftTint)) {
-            setLeftTint(array.getColor(R.styleable.TitleBar_leftTint, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_leftTint)) {
+            setLeftTint(array.getColor(R.styleable.common_TitleBar_common_leftTint, 0));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightTint)) {
-            setRightTint(array.getColor(R.styleable.TitleBar_rightTint, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_rightTint)) {
+            setRightTint(array.getColor(R.styleable.common_TitleBar_common_rightTint, 0));
         }
 
         // 文字颜色设置
-        if (array.hasValue(R.styleable.TitleBar_leftColor)) {
-            setLeftColor(array.getColor(R.styleable.TitleBar_leftColor, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_leftColor)) {
+            setLeftColor(array.getColor(R.styleable.common_TitleBar_common_leftColor, 0));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_titleColor)) {
-            setTitleColor(array.getColor(R.styleable.TitleBar_titleColor, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_titleColor)) {
+            setTitleColor(array.getColor(R.styleable.common_TitleBar_common_titleColor, 0));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightColor)) {
-            setRightColor(array.getColor(R.styleable.TitleBar_rightColor, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_rightColor)) {
+            setRightColor(array.getColor(R.styleable.common_TitleBar_common_rightColor, 0));
         }
 
         // 文字大小设置
-        if (array.hasValue(R.styleable.TitleBar_leftSize)) {
-            setLeftSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_leftSize, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_leftSize)) {
+            setLeftSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.common_TitleBar_common_leftSize, 0));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_titleSize)) {
-            setTitleSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_titleSize, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_titleSize)) {
+            setTitleSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.common_TitleBar_common_titleSize, 0));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightSize)) {
-            setRightSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_rightSize, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_rightSize)) {
+            setRightSize(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.common_TitleBar_common_rightSize, 0));
         }
 
         // 背景设置
-        if (array.hasValue(R.styleable.TitleBar_leftBackground)) {
-            setLeftBackground(array.getDrawable(R.styleable.TitleBar_leftBackground));
+        if (array.hasValue(R.styleable.common_TitleBar_common_leftBackground)) {
+            setLeftBackground(array.getDrawable(R.styleable.common_TitleBar_common_leftBackground));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_rightBackground)) {
-            setRightBackground(array.getDrawable(R.styleable.TitleBar_rightBackground));
+        if (array.hasValue(R.styleable.common_TitleBar_common_rightBackground)) {
+            setRightBackground(array.getDrawable(R.styleable.common_TitleBar_common_rightBackground));
         }
 
         // 分割线设置
-        if (array.hasValue(R.styleable.TitleBar_lineColor)) {
-            setLineDrawable(array.getDrawable(R.styleable.TitleBar_lineColor));
+        if (array.hasValue(R.styleable.common_TitleBar_common_lineColor)) {
+            setLineDrawable(array.getDrawable(R.styleable.common_TitleBar_common_lineColor));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_titleGravity)) {
-            setTitleGravity(array.getInt(R.styleable.TitleBar_titleGravity, Gravity.NO_GRAVITY));
+        if (array.hasValue(R.styleable.common_TitleBar_common_titleGravity)) {
+            setTitleGravity(array.getInt(R.styleable.common_TitleBar_common_titleGravity, Gravity.NO_GRAVITY));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_titleStyle)) {
-            setTitleStyle(Typeface.defaultFromStyle(array.getInt(R.styleable.TitleBar_titleStyle, Typeface.NORMAL)));
+        if (array.hasValue(R.styleable.common_TitleBar_common_titleStyle)) {
+            setTitleStyle(Typeface.defaultFromStyle(array.getInt(R.styleable.common_TitleBar_common_titleStyle, Typeface.NORMAL)));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_lineVisible)) {
-            setLineVisible(array.getBoolean(R.styleable.TitleBar_lineVisible, false));
+        if (array.hasValue(R.styleable.common_TitleBar_common_lineVisible)) {
+            setLineVisible(array.getBoolean(R.styleable.common_TitleBar_common_lineVisible, false));
         }
 
-        if (array.hasValue(R.styleable.TitleBar_lineSize)) {
-            setLineSize(array.getDimensionPixelSize(R.styleable.TitleBar_lineSize, 0));
+        if (array.hasValue(R.styleable.common_TitleBar_common_lineSize)) {
+            setLineSize(array.getDimensionPixelSize(R.styleable.common_TitleBar_common_lineSize, 0));
         }
 
         // 如果设置了这两个属性，则将内间距置为空
-        if (array.hasValue(R.styleable.TitleBar_android_paddingHorizontal) || array.hasValue(R.styleable.TitleBar_android_paddingVertical)) {
+        if (array.hasValue(R.styleable.common_TitleBar_android_paddingHorizontal) || array.hasValue(R.styleable.common_TitleBar_android_paddingVertical)) {
             setPadding(0, 0, 0, 0);
         }
         // 获取子 View 水平内间距
-        mHorizontalPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_android_paddingHorizontal,
+        mHorizontalPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.common_TitleBar_android_paddingHorizontal,
                 mCurrentInitializer.getHorizontalPadding(getContext())), getResources().getDisplayMetrics());
         // 获取子 View 垂直内间距
-        mVerticalPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.TitleBar_android_paddingVertical,
+        mVerticalPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_PX, array.getDimensionPixelSize(R.styleable.common_TitleBar_android_paddingVertical,
                 mCurrentInitializer.getVerticalPadding(getContext())), getResources().getDisplayMetrics());
 
         // 回收 TypedArray 对象

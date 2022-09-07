@@ -1,16 +1,17 @@
 package com.common.widget.dialog.util;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Rect;
-import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 
+import androidx.annotation.NonNull;
 
 import com.common.widget.dialog.core.BasePopupView;
 
@@ -31,13 +32,15 @@ public final class KeyboardUtils {
 
     private static int sDecorViewDelta = 0;
 
-    private static int getDecorViewInvisibleHeight(final Activity activity) {
-        final View decorView = activity.getWindow().getDecorView();
+    private static int getDecorViewInvisibleHeight(final Window window) {
+        final View decorView = window.getDecorView();
         if (decorView == null) return sDecorViewInvisibleHeightPre;
         final Rect outRect = new Rect();
         decorView.getWindowVisibleDisplayFrame(outRect);
         int delta = Math.abs(decorView.getBottom() - outRect.bottom);
-        if (delta <= getNavBarHeight()) {
+        if(XPopupUtils.isNavBarVisible(window)) delta-= XPopupUtils.getNavBarHeight();
+//        Log.e("tag", "delta: "+delta  + "  hasNav:   "+ XPopupUtils.isNavBarVisible(window));
+        if (delta <= XPopupUtils.getNavBarHeight() + XPopupUtils.getStatusBarHeight()) {
             sDecorViewDelta = delta;
             return 0;
         }
@@ -47,21 +50,21 @@ public final class KeyboardUtils {
     /**
      * Register soft input changed listener.
      *
-     * @param activity The activity.
+     * @param window The activity.
      * @param listener The soft input changed listener.
      */
-    public static void registerSoftInputChangedListener(final Activity activity, final BasePopupView popupView, final OnSoftInputChangedListener listener) {
-        final int flags = activity.getWindow().getAttributes().flags;
+    public static void registerSoftInputChangedListener(final Window window, final BasePopupView popupView, final OnSoftInputChangedListener listener) {
+        final int flags = window.getAttributes().flags;
         if ((flags & WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS) != 0) {
-            activity.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+            window.clearFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
         }
-        final FrameLayout contentView = activity.findViewById(android.R.id.content);
-        sDecorViewInvisibleHeightPre = getDecorViewInvisibleHeight(activity);
+        final FrameLayout contentView = window.findViewById(android.R.id.content);
+        sDecorViewInvisibleHeightPre = getDecorViewInvisibleHeight(window);
         listenerMap.put(popupView, listener);
         ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
-                    int height = getDecorViewInvisibleHeight(activity);
+                    int height = getDecorViewInvisibleHeight(window);
                     if (sDecorViewInvisibleHeightPre != height) {
                         //通知所有弹窗的监听器输入法高度变化了
                         for (OnSoftInputChangedListener  changedListener: listenerMap.values()) {
@@ -77,21 +80,11 @@ public final class KeyboardUtils {
 
     public static void removeLayoutChangeListener(View decorView, BasePopupView popupView){
         onGlobalLayoutListener = null;
+        listenerMap.remove(popupView);
         if(decorView==null)return;
         View contentView = decorView.findViewById(android.R.id.content);
         if(contentView==null)return;
         contentView.getViewTreeObserver().removeGlobalOnLayoutListener(onGlobalLayoutListener);
-        listenerMap.remove(popupView);
-    }
-
-    private static int getNavBarHeight() {
-        Resources res = Resources.getSystem();
-        int resourceId = res.getIdentifier("navigation_bar_height", "dimen", "android");
-        if (resourceId != 0) {
-            return res.getDimensionPixelSize(resourceId);
-        } else {
-            return 0;
-        }
     }
 
     public static void showSoftInput(View view) {
@@ -103,7 +96,22 @@ public final class KeyboardUtils {
         InputMethodManager imm = (InputMethodManager) view.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
-
+    public static void hideSoftInput(@NonNull final Window window) {
+        View view = window.getCurrentFocus();
+        if (view == null) {
+            View decorView = window.getDecorView();
+            View focusView = decorView.findViewWithTag("keyboardTagView");
+            if (focusView == null) {
+                view = new EditText(window.getContext());
+                view.setTag("keyboardTagView");
+                ((ViewGroup) decorView).addView(view, 0, 0);
+            } else {
+                view = focusView;
+            }
+            view.requestFocus();
+        }
+        hideSoftInput(view);
+    }
     public interface OnSoftInputChangedListener {
         void onSoftInputChanged(int height);
     }

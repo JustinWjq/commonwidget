@@ -1,37 +1,37 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="icon_margin">10dp</dimen>
-    <dimen name="icon_width">0dp</dimen>
-    <dimen name="icon_height">40dp</dimen>
-    <dimen name="item_text_size">15sp</dimen>
-    <dimen name="title_text_size">15sp</dimen>
+    <dimen name="common_icon_margin">10dp</dimen>
+    <dimen name="common_icon_width">0dp</dimen>
+    <dimen name="common_icon_height">40dp</dimen>
+    <dimen name="common_item_text_size">15sp</dimen>
+    <dimen name="common_title_text_size">15sp</dimen>
 
-    <dimen name="tx_def_height">50dp</dimen>
+    <dimen name="common_def_height">50dp</dimen>
 
-    <dimen name="tx_dp_1">1dp</dimen>
-    <dimen name="tx_dp_4">4dp</dimen>
-    <dimen name="tx_dp_5">5dp</dimen>
-    <dimen name="tx_dp_10">10dp</dimen>
-    <dimen name="tx_dp_16">16dp</dimen>
-    <dimen name="tx_dp_20">20dp</dimen>
-    <dimen name="tx_dp_38">38dp</dimen>
-    <dimen name="tx_dp_40">40dp</dimen>
+    <dimen name="common_dp_1">1dp</dimen>
+    <dimen name="common_dp_4">4dp</dimen>
+    <dimen name="common_dp_5">5dp</dimen>
+    <dimen name="common_dp_10">10dp</dimen>
+    <dimen name="common_dp_16">16dp</dimen>
+    <dimen name="common_dp_20">20dp</dimen>
+    <dimen name="common_dp_38">38dp</dimen>
+    <dimen name="common_dp_40">40dp</dimen>
 
-    <dimen name="tx_sp_14">14sp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
-    <dimen name="space_20">20dp</dimen>
-    <dimen name="space_40">40dp</dimen>
+    <dimen name="common_sp_14">14sp</dimen>
+    <dimen name="common_fab_margin">16dp</dimen>
+    <dimen name="common_space_20">20dp</dimen>
+    <dimen name="common_space_40">40dp</dimen>
 
     <!-- 顶部按钮栏高度 -->
-    <dimen name="pickerview_topbar_height">44dp</dimen>
+    <dimen name="common_pickerview_topbar_height">44dp</dimen>
 
     <!-- 顶部按钮padding -->
-    <dimen name="pickerview_topbar_padding">20dp</dimen>
+    <dimen name="common_pickerview_topbar_padding">20dp</dimen>
 
     <!-- 顶部按钮文字大小 -->
-    <dimen name="pickerview_topbar_btn_textsize">17sp</dimen>
-    <dimen name="pickerview_topbar_title_textsize">18sp</dimen>
+    <dimen name="common_pickerview_topbar_btn_textsize">17sp</dimen>
+    <dimen name="common_pickerview_topbar_title_textsize">18sp</dimen>
     <!-- 选项文字大小 -->
-    <dimen name="pickerview_textsize">20sp</dimen>
+    <dimen name="common_pickerview_textsize">20sp</dimen>
 
 </resources>

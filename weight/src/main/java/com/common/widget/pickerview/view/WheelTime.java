@@ -590,32 +590,32 @@ public class WheelTime {
         if (label_year != null) {
             wv_year.setLabel(label_year);
         } else {
-            wv_year.setLabel(view.getContext().getString(R.string.pickerview_year));
+            wv_year.setLabel(view.getContext().getString(R.string.common_pickerview_year));
         }
         if (label_month != null) {
             wv_month.setLabel(label_month);
         } else {
-            wv_month.setLabel(view.getContext().getString(R.string.pickerview_month));
+            wv_month.setLabel(view.getContext().getString(R.string.common_pickerview_month));
         }
         if (label_day != null) {
             wv_day.setLabel(label_day);
         } else {
-            wv_day.setLabel(view.getContext().getString(R.string.pickerview_day));
+            wv_day.setLabel(view.getContext().getString(R.string.common_pickerview_day));
         }
         if (label_hours != null) {
             wv_hours.setLabel(label_hours);
         } else {
-            wv_hours.setLabel(view.getContext().getString(R.string.pickerview_hours));
+            wv_hours.setLabel(view.getContext().getString(R.string.common_pickerview_hours));
         }
         if (label_mins != null) {
             wv_minutes.setLabel(label_mins);
         } else {
-            wv_minutes.setLabel(view.getContext().getString(R.string.pickerview_minutes));
+            wv_minutes.setLabel(view.getContext().getString(R.string.common_pickerview_minutes));
         }
         if (label_seconds != null) {
             wv_seconds.setLabel(label_seconds);
         } else {
-            wv_seconds.setLabel(view.getContext().getString(R.string.pickerview_seconds));
+            wv_seconds.setLabel(view.getContext().getString(R.string.common_pickerview_seconds));
         }
 
     }

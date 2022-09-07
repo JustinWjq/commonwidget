@@ -1,43 +1,45 @@
 <resources>
-    <string name="tx_errcode_success">发送成功</string>
-    <string name="tx_errcode_cancel">发送取消</string>
-    <string name="tx_errcode_deny">发送被拒绝</string>
-    <string name="tx_errcode_unsupported">不支持错误</string>
-    <string name="tx_errcode_unknown">发送返回</string>
-    <string name="tx_joinroom_error">加入房间失败</string>
-    <string name="tx_showscreen_error">投屏失败</string>
-    <string name="tx_dialog_exit_cancel">取消</string>
-    <string name="tx_dialog_exit_title">确定删除?</string>
-    <string name="tx_dialog_exit_confirm">确定</string>
-    <string name="tx_dialog_exit_content"></string>
-    <string name="tx_brvah_app_name">Library</string>
-    <string name="tx_brvah_loading">正在加载中...</string>
-    <string name="tx_brvah_load_failed">加载失败，请点我重试</string>
-    <string name="tx_brvah_load_end">没有更多数据</string>
+    <string name="common_errcode_success">发送成功</string>
+    <string name="common_errcode_cancel">发送取消</string>
+    <string name="common_errcode_deny">发送被拒绝</string>
+    <string name="common_errcode_unsupported">不支持错误</string>
+    <string name="common_errcode_unknown">发送返回</string>
+    <string name="common_joinroom_error">加入房间失败</string>
+    <string name="common_showscreen_error">投屏失败</string>
+    <string name="common_dialog_exit_cancel">取消</string>
+    <string name="common_dialog_exit_title">确定删除?</string>
+    <string name="common_dialog_exit_confirm">确定</string>
+    <string name="common_dialog_exit_content"></string>
+    <string name="common_brvah_app_name">Library</string>
+    <string name="common_brvah_loading">正在加载中...</string>
+    <string name="common_brvah_load_failed">加载失败，请点我重试</string>
+    <string name="common_brvah_load_end">没有更多数据</string>
 
-    <string name="tx_str_invite">邀请成员</string>
-    <string name="tx_str_invite1">管理成员</string>
+    <string name="common_str_invite">邀请成员</string>
+    <string name="common_str_invite1">管理成员</string>
 
-    <string name="tx_str_share">屏幕分享时不能操作摄像头</string>
-    <string name="tx_str_screen">未开启悬浮窗权限</string>
-    <string name="tx_share_text">智慧展业-足不出户，随时联系您的顾问</string>
-    <string name="tx_toast_success">延长成功!</string>
-    <string name="tx_toast_error">延长失败!</string>
-    <string name="tx_toast_muteallmember">当前全体静音已解除\n参会人本人可控制静音状态</string>
-    <string name="tx_toast_transcoding_retry">转码中，请稍后重试!</string>
+    <string name="common_str_share">屏幕分享时不能操作摄像头</string>
+    <string name="common_str_screen">未开启悬浮窗权限</string>
+    <string name="common_share_text">智慧展业-足不出户，随时联系您的顾问</string>
+    <string name="common_toast_success">延长成功!</string>
+    <string name="common_toast_error">延长失败!</string>
+    <string name="common_toast_muteallmember">当前全体静音已解除\n参会人本人可控制静音状态</string>
+    <string name="common_toast_transcoding_retry">转码中，请稍后重试!</string>
 
-    <string name="tx_cancel">取消</string>
-    <string name="tx_ok">确定</string>
-    <string name="tx_save">保存</string>
+    <string name="common_cancel">cancel</string>
+    <string name="common_ok">ok</string>
+    <string name="common_save">save</string>
+    <string name="common_saved_to_gallery">Saved to album</string>
+    <string name="common_image_not_exist">Image not exist</string>
+    <string name="common_saved_fail">Image save failed</string>
 
 
-
-    <string name="pickerview_cancel">取消</string>
-    <string name="pickerview_submit">确定</string>
-    <string name="pickerview_year">年</string>
-    <string name="pickerview_month">月</string>
-    <string name="pickerview_day">日</string>
-    <string name="pickerview_hours">时</string>
-    <string name="pickerview_minutes">分</string>
-    <string name="pickerview_seconds">秒</string>
+    <string name="common_pickerview_cancel">取消</string>
+    <string name="common_pickerview_submit">确定</string>
+    <string name="common_pickerview_year">年</string>
+    <string name="common_pickerview_month">月</string>
+    <string name="common_pickerview_day">日</string>
+    <string name="common_pickerview_hours">时</string>
+    <string name="common_pickerview_minutes">分</string>
+    <string name="common_pickerview_seconds">秒</string>
 </resources>

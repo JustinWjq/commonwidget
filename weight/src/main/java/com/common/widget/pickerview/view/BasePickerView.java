@@ -60,7 +60,7 @@ public class BasePickerView {
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         if (isDialog()) {
             //如果是对话框模式
-            dialogView = (ViewGroup) layoutInflater.inflate(R.layout.layout_basepickerview, null, false);
+            dialogView = (ViewGroup) layoutInflater.inflate(R.layout.common_layout_basepickerview, null, false);
             //设置界面的背景为透明
             dialogView.setBackgroundColor(Color.TRANSPARENT);
             //这个是真正要加载选择器的父布局
@@ -85,7 +85,7 @@ public class BasePickerView {
                 mPickerOptions.decorView = (ViewGroup) ((Activity) context).getWindow().getDecorView();
             }
             //将控件添加到decorView中
-            rootView = (ViewGroup) layoutInflater.inflate(R.layout.layout_basepickerview, mPickerOptions.decorView, false);
+            rootView = (ViewGroup) layoutInflater.inflate(R.layout.common_layout_basepickerview, mPickerOptions.decorView, false);
             rootView.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
             if (mPickerOptions.outSideColor != -1) {
                 rootView.setBackgroundColor(mPickerOptions.outSideColor);
@@ -312,13 +312,13 @@ public class BasePickerView {
 
     public void createDialog() {
         if (dialogView != null) {
-            mDialog = new Dialog(context, R.style.custom_dialog2);
+            mDialog = new Dialog(context, R.style.common_custom_dialog2);
             mDialog.setCancelable(mPickerOptions.cancelable);//不能点外面取消,也不能点back取消
             mDialog.setContentView(dialogView);
 
             Window dialogWindow = mDialog.getWindow();
             if (dialogWindow != null) {
-                dialogWindow.setWindowAnimations(R.style.picker_view_scale_anim);
+                dialogWindow.setWindowAnimations(R.style.common_picker_view_scale_anim);
                 dialogWindow.setGravity(Gravity.CENTER);//可以改成Bottom
             }
 

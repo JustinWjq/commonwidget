@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="popwin_anim_style">
-        <item name="android:windowEnterAnimation">@anim/pop_show</item>
-        <item name="android:windowExitAnimation">@anim/pop_dismiss</item>
+    <style name="common_popwin_anim_style">
+        <item name="android:windowEnterAnimation">@anim/common_pop_show</item>
+        <item name="android:windowExitAnimation">@anim/common_pop_dismiss</item>
     </style>
 
-    <style name="picker_view_scale_anim" mce_bogus="1" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/pickerview_dialog_scale_in</item>
-        <item name="android:windowExitAnimation">@anim/pickerview_dialog_scale_out</item>
-    </style>
-
-
-    <style name="picker_view_slide_anim" mce_bogus="1" parent="android:Animation">
-        <item name="android:windowEnterAnimation">@anim/pickerview_slide_in_bottom</item>
-        <item name="android:windowExitAnimation">@anim/pickerview_slide_out_bottom</item>
+    <style name="common_picker_view_scale_anim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/common_pickerview_dialog_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/common_pickerview_dialog_scale_out</item>
     </style>
 
 
-    <style name="custom_dialog2" parent="@android:style/Theme.Dialog">
+    <style name="common_picker_view_slide_anim" mce_bogus="1" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/common_pickerview_slide_in_bottom</item>
+        <item name="android:windowExitAnimation">@anim/common_pickerview_slide_out_bottom</item>
+    </style>
+
+
+    <style name="common_custom_dialog2" parent="@android:style/Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <!-- Dialog的windowFrame框为无 -->
         <item name="android:windowIsFloating">true</item>
@@ -36,7 +36,7 @@
     </style>
 
 
-    <style name="tx_activityTranslucent">
+    <style name="common_activityTranslucent">
         <item name="android:background">@android:color/transparent</item>
         <item name="android:colorBackgroundCacheHint">@null</item>
         <item name="android:windowActionBar">false</item>
@@ -47,6 +47,19 @@
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowAnimationStyle">@null</item>
         <item name="android:windowDisablePreview">true</item>
+    </style>
+
+    <style name="common_XPopup_TransparentDialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:colorBackground">@null</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
 
 </resources>

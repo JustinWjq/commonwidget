@@ -1,16 +1,11 @@
 package com.common.widget.dialog.animator;
 
-import android.animation.FloatEvaluator;
 import android.animation.IntEvaluator;
 import android.animation.ValueAnimator;
-
-
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
-
 import com.common.widget.dialog.TxPopup;
 import com.common.widget.dialog.enums.PopupAnimation;
-
 
 /**
  * Description: 像系统的PopupMenu那样的动画
@@ -18,15 +13,14 @@ import com.common.widget.dialog.enums.PopupAnimation;
  */
 public class ScrollScaleAnimator extends PopupAnimator{
 
-    private FloatEvaluator floatEvaluator = new FloatEvaluator();
     private IntEvaluator intEvaluator = new IntEvaluator();
     private int startScrollX, startScrollY;
-    private float startAlpha = .2f;
+    private float startAlpha = 0f;
     private float startScale = 0f;
 
     public boolean isOnlyScaleX = false;
-    public ScrollScaleAnimator(View target, PopupAnimation popupAnimation) {
-        super(target, popupAnimation);
+    public ScrollScaleAnimator(View target, int animationDuration, PopupAnimation popupAnimation) {
+        super(target, animationDuration, popupAnimation);
     }
 
     @Override
@@ -43,7 +37,6 @@ public class ScrollScaleAnimator extends PopupAnimator{
                 // 设置参考点
                 applyPivot();
                 targetView.scrollTo(startScrollX, startScrollY);
-                if(targetView.getBackground()!=null)targetView.getBackground().setAlpha(0);
             }
         });
     }
@@ -106,44 +99,45 @@ public class ScrollScaleAnimator extends PopupAnimator{
 
     @Override
     public void animateShow() {
-        ValueAnimator animator = ValueAnimator.ofFloat(0, 1);
-        animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+        targetView.post(new Runnable() {
             @Override
-            public void onAnimationUpdate(ValueAnimator animation) {
-                float fraction = animation.getAnimatedFraction();
-                targetView.setAlpha(floatEvaluator.evaluate(fraction, startAlpha, 1f));
-                targetView.scrollTo(intEvaluator.evaluate(fraction, startScrollX, 0),
-                        intEvaluator.evaluate(fraction, startScrollY, 0));
-                float scale = floatEvaluator.evaluate(fraction, startScale, 1f);
-                targetView.setScaleX(scale);
-                if(!isOnlyScaleX)targetView.setScaleY(scale);
-                if(fraction>=.9f && targetView.getBackground()!=null) {
-                    float alphaFraction = (fraction - .9f) / .1f;
-                    targetView.getBackground().setAlpha((int) (alphaFraction*255));
-                }
+            public void run() {
+                ValueAnimator animator = ValueAnimator.ofFloat(0, 1);
+                animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator animation) {
+                        float fraction = animation.getAnimatedFraction();
+                        targetView.setAlpha(fraction);
+                        targetView.scrollTo(intEvaluator.evaluate(fraction, startScrollX, 0),
+                                intEvaluator.evaluate(fraction, startScrollY, 0));
+                        targetView.setScaleX(fraction);
+                        if(!isOnlyScaleX)targetView.setScaleY(fraction);
+                    }
+                });
+                animator.setDuration(animationDuration).setInterpolator(new FastOutSlowInInterpolator());
+                animator.start();
             }
         });
-        animator.setDuration(TxPopup.getAnimationDuration()).setInterpolator(new FastOutSlowInInterpolator());
-        animator.start();
+
     }
 
     @Override
     public void animateDismiss() {
+        if(animating)return;
         ValueAnimator animator = ValueAnimator.ofFloat(0, 1);
+        observerAnimator(animator);
         animator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
             @Override
             public void onAnimationUpdate(ValueAnimator animation) {
                 float fraction = animation.getAnimatedFraction();
-                targetView.setAlpha(floatEvaluator.evaluate(fraction, 1f, startAlpha));
+                targetView.setAlpha(1-fraction);
                 targetView.scrollTo(intEvaluator.evaluate(fraction, 0, startScrollX),
                         intEvaluator.evaluate(fraction, 0, startScrollY));
-                float scale = floatEvaluator.evaluate(fraction, 1f, startScale);
-                targetView.setScaleX(scale);
-                if(!isOnlyScaleX)targetView.setScaleY(scale);
-                if(targetView.getBackground()!=null)targetView.getBackground().setAlpha((int) (fraction*255));
+                targetView.setScaleX(1-fraction);
+                if(!isOnlyScaleX)targetView.setScaleY(1-fraction);
             }
         });
-        animator.setDuration(TxPopup.getAnimationDuration())
+        animator.setDuration(animationDuration)
                 .setInterpolator(new FastOutSlowInInterpolator());
         animator.start();
     }

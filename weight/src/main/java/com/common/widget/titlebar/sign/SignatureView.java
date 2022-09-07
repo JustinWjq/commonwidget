@@ -15,8 +15,8 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.PorterDuff;
 import android.os.Build;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -80,7 +80,7 @@ public class SignatureView extends View {
         paint.setColor(paintColor);
         //画笔宽度
         paint.setStrokeWidth(paintWidth);
-        setBackground(context.getDrawable(R.drawable.bg_sign));
+        setBackground(context.getDrawable(R.drawable.common_bg_sign));
     }
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {

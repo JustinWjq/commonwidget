@@ -57,7 +57,7 @@ public class NightBarInitializer extends CommonBarInitializer {
 
     @Override
     public Drawable getBackIcon(Context context) {
-        return getDrawableResources(context, R.drawable.bar_arrows_left_white);
+        return getDrawableResources(context, R.drawable.common_bar_arrows_left_white);
     }
 
     @Override

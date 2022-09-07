@@ -1,3 +1,4 @@
 rootProject.name = "CommonPj"
-include ':app'
+//include ':app'
 include ':weight'
+include ':common'

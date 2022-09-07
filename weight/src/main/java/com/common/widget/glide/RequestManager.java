@@ -44,9 +44,9 @@ import java.util.UUID;
  * built in Activity and Fragment lifecycle handling, use the static Glide.load methods with your Fragment or Activity.
  *
  * @see TxGlide#with(android.app.Activity)
- * @see TxGlide#with(android.support.v4.app.FragmentActivity)
+ * @see TxGlide#with(androidx.core.app.FragmentActivity)
  * @see TxGlide#with(android.app.Fragment)
- * @see TxGlide#with(android.support.v4.app.Fragment)
+ * @see TxGlide#with(androidx.core.app.Fragment)
  * @see TxGlide#with(Context)
  */
 public class RequestManager implements LifecycleListener {

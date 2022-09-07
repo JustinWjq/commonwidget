@@ -1,41 +1,33 @@
 package com.common.widget.dialog.animator;
 
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewPropertyAnimator;
 
-import com.common.widget.dialog.TxPopup;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
+
 import com.common.widget.dialog.enums.PopupAnimation;
-
 
 /**
  * Description: 平移动画，不带渐变
  * Create by dance, at 2018/12/9
  */
 public class TranslateAnimator extends PopupAnimator {
-    //动画起始坐标
     private float startTranslationX, startTranslationY;
-    private int oldWidth, oldHeight;
-    private float initTranslationX, initTranslationY;
-    private boolean hasInitDefTranslation = false;
+    private float endTranslationX, endTranslationY;
 
-    public TranslateAnimator(View target, PopupAnimation popupAnimation) {
-        super(target, popupAnimation);
+    public TranslateAnimator(View target, int animationDuration, PopupAnimation popupAnimation) {
+        super(target, animationDuration, popupAnimation);
     }
 
     @Override
     public void initAnimator() {
-        if(!hasInitDefTranslation){
-            initTranslationX = targetView.getTranslationX();
-            initTranslationY = targetView.getTranslationY();
-            hasInitDefTranslation = true;
-        }
+        endTranslationX = targetView.getTranslationX();
+        endTranslationY = targetView.getTranslationY();
         // 设置起始坐标
         applyTranslation();
         startTranslationX = targetView.getTranslationX();
         startTranslationY = targetView.getTranslationY();
-
-        oldWidth = targetView.getMeasuredWidth();
-        oldHeight = targetView.getMeasuredHeight();
     }
 
     private void applyTranslation() {
@@ -57,31 +49,48 @@ public class TranslateAnimator extends PopupAnimator {
 
     @Override
     public void animateShow() {
-        targetView.animate().translationX(initTranslationX).translationY(initTranslationY)
-                .setInterpolator(new FastOutSlowInInterpolator())
-                .setDuration(TxPopup.getAnimationDuration()).start();
+        ViewPropertyAnimator animator = null;
+        switch (popupAnimation) {
+            case TranslateFromLeft:
+            case TranslateFromRight:
+                animator = targetView.animate().translationX(endTranslationX);
+                break;
+            case TranslateFromTop:
+            case TranslateFromBottom:
+                animator = targetView.animate().translationY(endTranslationY);
+                break;
+        }
+        if(animator!=null)animator.setInterpolator(new FastOutSlowInInterpolator())
+                .setDuration(animationDuration)
+                .withLayer()
+                .start();
     }
 
     @Override
     public void animateDismiss() {
-        //执行消失动画的时候，宽高可能改变了，所以需要修正动画的起始值
+        if(animating)return;
+        ViewPropertyAnimator animator = null;
         switch (popupAnimation) {
             case TranslateFromLeft:
-                startTranslationX -= targetView.getMeasuredWidth() - oldWidth;
+                startTranslationX = -targetView.getRight();
+                animator = targetView.animate().translationX(startTranslationX);
                 break;
             case TranslateFromTop:
-                startTranslationY -= targetView.getMeasuredHeight() - oldHeight;
+                startTranslationY = -targetView.getBottom();
+                animator = targetView.animate().translationY(startTranslationY);
                 break;
             case TranslateFromRight:
-                startTranslationX += targetView.getMeasuredWidth() - oldWidth;
+                startTranslationX = ((View) targetView.getParent()).getMeasuredWidth() - targetView.getLeft();
+                animator = targetView.animate().translationX(startTranslationX);
                 break;
             case TranslateFromBottom:
-                startTranslationY += targetView.getMeasuredHeight() - oldHeight;
+                startTranslationY = ((View) targetView.getParent()).getMeasuredHeight() - targetView.getTop();
+                animator = targetView.animate().translationY(startTranslationY);
                 break;
         }
-
-        targetView.animate().translationX(startTranslationX).translationY(startTranslationY)
-                .setInterpolator(new FastOutSlowInInterpolator())
-                .setDuration(TxPopup.getAnimationDuration()).start();
+        if(animator!=null)observerAnimator(animator.setInterpolator(new FastOutSlowInInterpolator())
+                .setDuration((long) (animationDuration*.8))
+                .withLayer())
+                .start();
     }
 }

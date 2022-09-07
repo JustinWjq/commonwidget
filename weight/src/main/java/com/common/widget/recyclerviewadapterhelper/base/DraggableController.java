@@ -2,8 +2,8 @@ package com.common.widget.recyclerviewadapterhelper.base;
 
 import android.annotation.SuppressLint;
 import android.graphics.Canvas;
-import android.support.annotation.NonNull;
-import android.support.v4.view.MotionEventCompat;
+import androidx.annotation.NonNull;
+import androidx.core.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
 import android.view.MotionEvent;
@@ -64,7 +64,7 @@ public class DraggableController implements IDraggableListener {
             if (hasToggleView()) {
                 View toggleView = holder.getView(mToggleViewId);
                 if (toggleView != null) {
-                    toggleView.setTag(R.id.tx_BaseQuickAdapter_viewholder_support, holder);
+                    toggleView.setTag(R.id.common_BaseQuickAdapter_viewholder_support, holder);
                     if (mDragOnLongPress) {
                         toggleView.setOnLongClickListener(mOnToggleViewLongClickListener);
                     } else {
@@ -100,7 +100,7 @@ public class DraggableController implements IDraggableListener {
                 @Override
                 public boolean onLongClick(View v) {
                     if (mItemTouchHelper != null && itemDragEnabled) {
-                        mItemTouchHelper.startDrag((RecyclerView.ViewHolder) v.getTag(R.id.tx_BaseQuickAdapter_viewholder_support));
+                        mItemTouchHelper.startDrag((RecyclerView.ViewHolder) v.getTag(R.id.common_BaseQuickAdapter_viewholder_support));
                     }
                     return true;
                 }
@@ -113,7 +113,7 @@ public class DraggableController implements IDraggableListener {
                     if (MotionEventCompat.getActionMasked(event) == MotionEvent.ACTION_DOWN
                             && !mDragOnLongPress) {
                         if (mItemTouchHelper != null && itemDragEnabled) {
-                            mItemTouchHelper.startDrag((RecyclerView.ViewHolder) v.getTag(R.id.tx_BaseQuickAdapter_viewholder_support));
+                            mItemTouchHelper.startDrag((RecyclerView.ViewHolder) v.getTag(R.id.common_BaseQuickAdapter_viewholder_support));
                         }
                         return true;
                     } else {

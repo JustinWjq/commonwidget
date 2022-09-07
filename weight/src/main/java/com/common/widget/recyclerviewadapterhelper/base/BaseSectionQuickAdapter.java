@@ -1,6 +1,6 @@
 package com.common.widget.recyclerviewadapterhelper.base;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.view.ViewGroup;
 
 

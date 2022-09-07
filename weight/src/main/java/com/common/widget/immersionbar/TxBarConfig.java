@@ -60,7 +60,7 @@ class TxBarConfig {
     private int getActionBarHeight(Activity activity) {
         int result = 0;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-            View actionBar = activity.getWindow().findViewById(R.id.tx_action_bar_container);
+            View actionBar = activity.getWindow().findViewById(R.id.common_action_bar_container);
             if (actionBar != null) {
                 result = actionBar.getMeasuredHeight();
             }

@@ -1,28 +1,24 @@
 package com.common.widget.dialog.animator;
 
-
-
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
-
-import com.common.widget.dialog.TxPopup;
 import com.common.widget.dialog.enums.PopupAnimation;
-
 
 /**
  * Description: 缩放透明
  * Create by dance, at 2018/12/9
  */
 public class ScaleAlphaAnimator extends PopupAnimator {
-    public ScaleAlphaAnimator(View target, PopupAnimation popupAnimation) {
-        super(target, popupAnimation);
+    public ScaleAlphaAnimator(View target, int animationDuration, PopupAnimation popupAnimation) {
+        super(target, animationDuration, popupAnimation);
     }
 
+    float startScale = .75f;
     @Override
     public void initAnimator() {
-        targetView.setScaleX(0f);
-        targetView.setScaleY(0f);
+        targetView.setScaleX(startScale);
+        targetView.setScaleY(startScale);
         targetView.setAlpha(0);
 
         // 设置动画参考点
@@ -65,16 +61,25 @@ public class ScaleAlphaAnimator extends PopupAnimator {
 
     @Override
     public void animateShow() {
-        targetView.animate().scaleX(1f).scaleY(1f).alpha(1f)
-                .setDuration(TxPopup.getAnimationDuration())
-                .setInterpolator(new OvershootInterpolator(1f))
-                .start();
+        targetView.post(new Runnable() {
+            @Override
+            public void run() {
+                targetView.animate().scaleX(1f).scaleY(1f).alpha(1f)
+                        .setDuration(animationDuration)
+                        .setInterpolator(new OvershootInterpolator(1f))
+//                .withLayer() 在部分6.0系统会引起crash
+                        .start();
+            }
+        });
     }
 
     @Override
     public void animateDismiss() {
-        targetView.animate().scaleX(0f).scaleY(0f).alpha(0f).setDuration(TxPopup.getAnimationDuration())
-                .setInterpolator(new FastOutSlowInInterpolator()).start();
+        if(animating)return;
+        observerAnimator(targetView.animate().scaleX(startScale).scaleY(startScale).alpha(0f).setDuration(animationDuration)
+                .setInterpolator(new FastOutSlowInInterpolator()))
+//                .withLayer() 在部分6.0系统会引起crash
+                .start();
     }
 
 }

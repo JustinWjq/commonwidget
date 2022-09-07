@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.StringRes;
-import android.support.v4.app.FragmentActivity;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.StringRes;
+import androidx.core.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -252,8 +252,8 @@ public abstract class  BaseActivity extends FragmentActivity implements TitleBar
                 // 默认状态栏字体颜色为黑色
                 .statusBarDarkFont(isStatusBarDarkFont())
                 // 指定导航栏背景颜色
-                .navigationBarColor(R.color.tx_colorwhite)
-                .statusBarColor(R.color.tx_colorPrimary)
+                .navigationBarColor(R.color.common_colorwhite)
+                .statusBarColor(R.color.common_colorPrimary)
                 // 状态栏字体和导航栏内容自动变色，必须指定状态栏颜色和导航栏颜色才可以自动变色
                 .autoDarkModeEnable(true, 0.2f);
     }

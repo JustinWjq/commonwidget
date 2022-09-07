@@ -11,11 +11,11 @@ class TxImmersionBarConstants {
     /**
      * android 4.4或者emui3状态栏ID识位
      */
-    static final int IMMERSION_ID_STATUS_BAR_VIEW = R.id.tx_immersion_status_bar_view;
+    static final int IMMERSION_ID_STATUS_BAR_VIEW = R.id.common_immersion_status_bar_view;
     /**
      * android 4.4或者emui3导航栏ID识位
      */
-    static final int IMMERSION_ID_NAVIGATION_BAR_VIEW = R.id.tx_immersion_navigation_bar_view;
+    static final int IMMERSION_ID_NAVIGATION_BAR_VIEW = R.id.common_immersion_navigation_bar_view;
     /**
      * 状态栏高度标识位
      */

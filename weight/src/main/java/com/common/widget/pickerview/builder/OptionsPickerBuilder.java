@@ -2,7 +2,7 @@ package com.common.widget.pickerview.builder;
 
 import android.content.Context;
 import android.graphics.Typeface;
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 import android.view.View;
 import android.view.ViewGroup;
 

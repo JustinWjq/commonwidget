@@ -1,12 +1,9 @@
 package com.common.widget.dialog.animator;
 
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import android.view.View;
-
 import com.common.widget.dialog.TxPopup;
 import com.common.widget.dialog.enums.PopupAnimation;
-import com.common.widget.dialog.util.XPopupUtils;
-
 
 /**
  * Description: 平移动画
@@ -16,8 +13,8 @@ public class TranslateAlphaAnimator extends PopupAnimator {
     //动画起始坐标
     private float startTranslationX, startTranslationY;
     private float defTranslationX, defTranslationY;
-    public TranslateAlphaAnimator(View target, PopupAnimation popupAnimation) {
-        super(target, popupAnimation);
+    public TranslateAlphaAnimator(View target, int animationDuration, PopupAnimation popupAnimation) {
+        super(target, animationDuration, popupAnimation);
     }
 
     @Override
@@ -33,8 +30,6 @@ public class TranslateAlphaAnimator extends PopupAnimator {
     }
 
     private void applyTranslation() {
-        int halfWidthOffset = XPopupUtils.getWindowWidth(targetView.getContext())/2 - targetView.getMeasuredWidth()/2;
-        int halfHeightOffset = XPopupUtils.getWindowHeight(targetView.getContext())/2 - targetView.getMeasuredHeight()/2;
         switch (popupAnimation){
             case TranslateAlphaFromLeft:
                 targetView.setTranslationX(-(targetView.getMeasuredWidth()/* + halfWidthOffset*/));
@@ -55,13 +50,18 @@ public class TranslateAlphaAnimator extends PopupAnimator {
     public void animateShow() {
         targetView.animate().translationX(defTranslationX).translationY(defTranslationY).alpha(1f)
                 .setInterpolator(new FastOutSlowInInterpolator())
-                .setDuration(TxPopup.getAnimationDuration()).start();
+                .setDuration(animationDuration)
+                .withLayer()
+                .start();
     }
 
     @Override
     public void animateDismiss() {
-        targetView.animate().translationX(startTranslationX).translationY(startTranslationY).alpha(0f)
+        if(animating)return;
+        observerAnimator(targetView.animate().translationX(startTranslationX).translationY(startTranslationY).alpha(0f)
                 .setInterpolator(new FastOutSlowInInterpolator())
-                .setDuration(TxPopup.getAnimationDuration()).start();
+                .setDuration(animationDuration)
+                .withLayer())
+                .start();
     }
 }

@@ -2,8 +2,8 @@ package com.common.widget.view;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.graphics.drawable.DrawableCompat;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
@@ -40,7 +40,7 @@ public final class ClearEditText extends RegexEditText
     public ClearEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
 
-        mClearDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.input_delete_ic));
+        mClearDrawable = DrawableCompat.wrap(ContextCompat.getDrawable(context, R.drawable.common_input_delete_ic));
         mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
         setDrawableVisible(false);
         super.setOnTouchListener(this);

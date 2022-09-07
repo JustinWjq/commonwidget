@@ -4,9 +4,10 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.View;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.common.widget.R;
 
@@ -19,7 +20,7 @@ public class DividerItemDecoration extends RecyclerView.ItemDecoration {
     public DividerItemDecoration(Context context) {
         mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        mPaint.setColor(context.getResources().getColor(R.color.tx_color_ededed));
+        mPaint.setColor(context.getResources().getColor(R.color.common_color_ededed));
         dividerHeight = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0.5f, context.getResources().getDisplayMetrics());
     }
 

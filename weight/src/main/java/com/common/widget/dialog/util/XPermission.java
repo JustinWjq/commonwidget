@@ -2,7 +2,6 @@ package com.common.widget.dialog.util;
 
 import android.annotation.TargetApi;
 import android.app.Activity;
-import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,25 +9,19 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.Settings;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.RequiresApi;
-import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.WindowManager;
-
-
-import com.common.widget.dialog.util.PermissionConstants;
-
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
-
-;
 
 /**
  * Description: copy from https://github.com/Blankj/AndroidUtilCode
@@ -143,16 +136,6 @@ public final class XPermission {
      */
     @RequiresApi(api = Build.VERSION_CODES.M)
     public boolean isGrantedDrawOverlays() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            AppOpsManager aom = (AppOpsManager) context.getSystemService(Context.APP_OPS_SERVICE);
-            if (aom == null) return false;
-            int mode = aom.checkOpNoThrow(
-                    "android:system_alert_window",
-                    android.os.Process.myUid(),
-                    context.getPackageName()
-            );
-            return mode == AppOpsManager.MODE_ALLOWED || mode == AppOpsManager.MODE_IGNORED;
-        }
         return Settings.canDrawOverlays(context);
     }
 
@@ -193,14 +176,15 @@ public final class XPermission {
      * @param permissions The permissions.
      * @return the single {@link XPermission} instance
      */
-    public static XPermission create(Context context, @PermissionConstants.Permission final String... permissions) {
+    public static XPermission create(Context context, @PermissionConstants.PermissionGroup final String... permissions) {
         if(sInstance == null) return new XPermission(context, permissions);
+        sInstance.context = context;
         sInstance.prepare(permissions);
         return sInstance;
     }
 
-    public static XPermission create(Context context) {
-        return create(context, (String) null);
+    public static XPermission getInstance(){
+        return sInstance;
     }
 
     private boolean isIntentAvailable(final Intent intent) {
@@ -233,7 +217,6 @@ public final class XPermission {
      * Set rationale listener.
      *
      * @param listener The rationale listener.
-     * @return the single {@link com.lxj.xpermission.XPermission} instance
      */
     public XPermission rationale(final OnRationaleListener listener) {
         mOnRationaleListener = listener;
@@ -261,17 +244,6 @@ public final class XPermission {
     }
 
     /**
-     * Set the theme callback.
-     *
-     * @param callback The theme callback.
-     * @return the single {@link com.lxj.xpermission.XPermission} instance
-     */
-    public XPermission theme(final ThemeCallback callback) {
-        mThemeCallback = callback;
-        return this;
-    }
-
-    /**
      * Start request.
      */
     public void request() {
@@ -294,6 +266,10 @@ public final class XPermission {
                 startPermissionActivity();
             }
         }
+    }
+
+    public void releaseContext(){
+        context = null;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

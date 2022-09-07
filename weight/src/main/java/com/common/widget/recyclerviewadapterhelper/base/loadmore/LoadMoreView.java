@@ -1,7 +1,7 @@
 package com.common.widget.recyclerviewadapterhelper.base.loadmore;
 
-import android.support.annotation.IdRes;
-import android.support.annotation.LayoutRes;
+import androidx.annotation.IdRes;
+import androidx.annotation.LayoutRes;
 
 import com.common.widget.recyclerviewadapterhelper.base.TxBaseViewHolder;
 

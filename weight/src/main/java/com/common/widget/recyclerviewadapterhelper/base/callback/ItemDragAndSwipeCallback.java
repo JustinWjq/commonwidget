@@ -1,9 +1,10 @@
 package com.common.widget.recyclerviewadapterhelper.base.callback;
 
 import android.graphics.Canvas;
-import android.support.annotation.NonNull;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.helper.ItemTouchHelper;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.view.View;
 
 import com.common.widget.R;
@@ -66,7 +67,7 @@ public class ItemDragAndSwipeCallback extends ItemTouchHelper.Callback {
             } else if (mDraggableListener != null) {
                 mDraggableListener.onItemDragStart(viewHolder);
             }
-            viewHolder.itemView.setTag(R.id.tx_BaseQuickAdapter_dragging_support, true);
+            viewHolder.itemView.setTag(R.id.common_BaseQuickAdapter_dragging_support, true);
         } else if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE
                 && !isViewCreateByAdapter(viewHolder)) {
             if (mBaseItemDraggableAdapter != null) {
@@ -74,7 +75,7 @@ public class ItemDragAndSwipeCallback extends ItemTouchHelper.Callback {
             } else if (mDraggableListener != null) {
                 mDraggableListener.onItemSwipeStart(viewHolder);
             }
-            viewHolder.itemView.setTag(R.id.tx_BaseQuickAdapter_swiping_support, true);
+            viewHolder.itemView.setTag(R.id.common_BaseQuickAdapter_swiping_support, true);
         }
         super.onSelectedChanged(viewHolder, actionState);
     }
@@ -86,23 +87,23 @@ public class ItemDragAndSwipeCallback extends ItemTouchHelper.Callback {
             return;
         }
 
-        if (viewHolder.itemView.getTag(R.id.tx_BaseQuickAdapter_dragging_support) != null
-                && (Boolean) viewHolder.itemView.getTag(R.id.tx_BaseQuickAdapter_dragging_support)) {
+        if (viewHolder.itemView.getTag(R.id.common_BaseQuickAdapter_dragging_support) != null
+                && (Boolean) viewHolder.itemView.getTag(R.id.common_BaseQuickAdapter_dragging_support)) {
             if (mBaseItemDraggableAdapter != null) {
                 mBaseItemDraggableAdapter.onItemDragEnd(viewHolder);
             } else if (mDraggableListener != null) {
                 mDraggableListener.onItemDragEnd(viewHolder);
             }
-            viewHolder.itemView.setTag(R.id.tx_BaseQuickAdapter_dragging_support, false);
+            viewHolder.itemView.setTag(R.id.common_BaseQuickAdapter_dragging_support, false);
         }
-        if (viewHolder.itemView.getTag(R.id.tx_BaseQuickAdapter_swiping_support) != null
-                && (Boolean) viewHolder.itemView.getTag(R.id.tx_BaseQuickAdapter_swiping_support)) {
+        if (viewHolder.itemView.getTag(R.id.common_BaseQuickAdapter_swiping_support) != null
+                && (Boolean) viewHolder.itemView.getTag(R.id.common_BaseQuickAdapter_swiping_support)) {
             if (mBaseItemDraggableAdapter != null) {
                 mBaseItemDraggableAdapter.onItemSwipeClear(viewHolder);
             } else if (mDraggableListener != null) {
                 mDraggableListener.onItemSwipeClear(viewHolder);
             }
-            viewHolder.itemView.setTag(R.id.tx_BaseQuickAdapter_swiping_support, false);
+            viewHolder.itemView.setTag(R.id.common_BaseQuickAdapter_swiping_support, false);
         }
     }
 
